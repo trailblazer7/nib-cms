@@ -1,9 +1,24 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
+import useSWR, { Fetcher } from 'swr'
+import fetcher from '../utils/fetcher'
 
-const Home: NextPage = () => {
+
+const Home: NextPage = (props) => {
+
+  const { data, error } = useSWR('/api/hello', fetcher)
+
+  useEffect(() => {
+    console.log('Hello', data, error)
+  }, [data])
+
+
+  if (error) return <h1>Something went wrong</h1>
+  if (!data) return <h1>Loading...</h1>
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,7 +29,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to Nib CMS
         </h1>
 
         <p className={styles.description}>
