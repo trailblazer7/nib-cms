@@ -8,13 +8,16 @@ type Data = {
 
 export default function handler(
     req: NextApiRequest,
-    res: NextApiResponse<Data>
+    res: NextApiResponse<any>
 ) {
-    const { firstName, lastName, emailAddress, password, confirmPassword } = req.body
+    const { username, email, password } = req.body
 
-    if ( !firstName || !lastName || !emailAddress || !password || !confirmPassword ) {
+    if ( !username|| !email || !password ) {
         res.status(406).send({ error: 'Please fill all fields.' })
     } else {
-        res.redirect(307, '/')
+        res.status(200).json({
+            a: 'test',
+            b: 'test2'
+        })
     }
 }

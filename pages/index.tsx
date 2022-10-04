@@ -1,23 +1,21 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import useSWR, { Fetcher } from 'swr'
 import fetcher from '../utils/fetcher'
+import prisma from '../lib/prisma'
 
 
 const Home: NextPage = (props) => {
 
-  const { data, error } = useSWR('/api/hello', fetcher)
+  //const { data, error } = useSWR('/api/hello', fetcher)
 
   useEffect(() => {
-    console.log('Hello', data, error)
-  }, [data])
+    console.log('Props index: ', props)
+  }, [props])
 
-
-  if (error) return <h1>Something went wrong</h1>
-  if (!data) return <h1>Loading...</h1>
 
   return (
     <div className={styles.container}>
@@ -83,5 +81,22 @@ const Home: NextPage = (props) => {
     </div>
   )
 }
+
+// index.tsx
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await prisma.post.findMany({
+    where: { published: false },
+    include: {
+      author: {
+        select: { name: true },
+      },
+    },
+  });
+  return {
+    props: { posts },
+    revalidate: 10,
+  };
+};
+
 
 export default Home
