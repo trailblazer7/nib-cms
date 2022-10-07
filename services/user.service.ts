@@ -1,3 +1,4 @@
+import { fetchWrapper } from "../helpers"
 import { IRegUser } from "../types"
 
 
@@ -6,20 +7,11 @@ const login = (username: string, password: string) => {
 }
 
 const register = async (regData: IRegUser) => {
-  const response = await fetch('/api/setup', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(regData),
-  })
-
-  const data = await response.json()
-
-  return data
+  return fetchWrapper.post('/api/users/register', regData)
 }
 
 export const userService = {
+  get userValue() { return {token: null} },
   login,
   register
 }

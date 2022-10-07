@@ -88,7 +88,7 @@ export const getStaticProps: GetStaticProps = async () => {
     where: { published: false },
     include: {
       author: {
-        select: { name: true },
+        select: { username: true },
       },
     },
   });

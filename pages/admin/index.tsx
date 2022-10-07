@@ -30,7 +30,7 @@ const Admin: NextPage = () => {
               Or{' '}
               <Link href={'/admin/signup'}>
                 <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer">
-                  Sign Up
+                  Register
                 </a>
               </Link>
             </p>
