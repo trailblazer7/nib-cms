@@ -18,11 +18,17 @@ model Post {
 }
 
 model User {
-  id            String       @default(cuid()) @id
-  name          String?
+  id            String    @default(cuid()) @id
+  username      String    @unique
   email         String?   @unique
+  password      String
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
   posts         Post[]
+  @@unique([username, email])
   @@map(name: "users")
+}
+
+model Test {
+  id String    @default(cuid()) @id
 }

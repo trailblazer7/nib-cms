@@ -1,10 +1,12 @@
+import Router from 'next/router'
 import React, { MouseEventHandler, useRef, useState } from 'react'
+import { userService } from '../../services'
 
 interface IProps {
   clickHandler: MouseEventHandler
 }
 
-export const SetUpLending = ({ clickHandler }: IProps) => {
+export const RegisterLending = ({ clickHandler }: IProps) => {
   return (
     <div className="bg-gray-50 m-20">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8">
@@ -35,14 +37,15 @@ export const SetUpLending = ({ clickHandler }: IProps) => {
   )
 }
 
-export const SetUpForm = () => {
+export const RegisterForm = () => {
 
   const [username, setUsername] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [confirmPassword, setConfirmPassword] = useState<string>('')
   const [error, setError] = useState<any>(null)
-  
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
 
   const onCreate = () => {
     // TODO: better validation
@@ -52,25 +55,24 @@ export const SetUpForm = () => {
     const isFormFilled = username && email && password && confirmPassword
     const passwordMatches = password === confirmPassword
     const action = async () => {
-      try {
-        const result = await fetch('/api/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username, email, password  }),
-        }) 
+      setIsLoading(true)
+      const response = await userService.register({
+        username,
+        email,
+        password
+      })
 
-        const json = await result.json()
-
-        console.log('Signup success result: ', json)
-      } catch (error) {
-        console.log('Signup failed: ', error)
+      if ( response.error ) {
+        setError(response.error)
+      } else {
+        Router.push('/admin')
       }
+
+      setIsLoading(false)
     }
 
-    if ( !isFormFilled ) return setError("Fill in all the fields.")
-    if ( !passwordMatches ) return setError("Passwords do not match.")
+    if (!isFormFilled) return setError("Fill in all the fields.")
+    if (!passwordMatches) return setError("Passwords do not match.")
 
     action()
   }
@@ -145,9 +147,10 @@ export const SetUpForm = () => {
         <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
           <button
             onClick={onCreate}
+            disabled={isLoading}
             className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
-            Create
+            {isLoading ? 'Creating...' : 'Create'}
           </button>
         </div>
       </div>
