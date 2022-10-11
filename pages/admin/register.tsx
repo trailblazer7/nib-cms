@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { RegisterForm, RegisterLending } from '../../components'
 
 
-const SetUp: NextPage = () => {
+const Register: NextPage = () => {
 
 	const [showSetUpForm, setShowSetUpForm] = useState(false)
 	const onStart = () => setShowSetUpForm(true)
@@ -13,4 +13,4 @@ const SetUp: NextPage = () => {
 						: <RegisterLending clickHandler={onStart}/> 
 }
 
-export default SetUp
+export default Register

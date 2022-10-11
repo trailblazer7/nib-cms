@@ -1,15 +1,17 @@
 import { IAuthUser } from "./interfaces";
 
+type PropType = string | null
+
 export class User {
-  public id: string = '';
-  public username: string = '';
-  public token: string | null = null;
+  public id: PropType = null
+  public username: PropType = null
+  public token: PropType = null
 
   constructor(user: IAuthUser) {
-    this.setUser(user)
+    this.set(user)
   }
 
-  public setUser(user: IAuthUser) {
+  public set(user: IAuthUser) {
     this.id = user.id
     this.username = user.username
 
@@ -18,11 +20,15 @@ export class User {
     }
   }
 
-  public getUser(): IAuthUser {
+  public reset() {
+    this.id = ''
+  }
+
+  public get(): IAuthUser {
     return {
-      id: this.id,
-      username: this.id,
-      token: this.token
+      id: this.id as string,
+      username: this.id as string,
+      token: this.token as string
     }
   }
 }

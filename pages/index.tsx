@@ -3,19 +3,17 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
-import useSWR, { Fetcher } from 'swr'
-import fetcher from '../utils/fetcher'
 import prisma from '../lib/prisma'
+import { useAuthorized } from '../helpers'
+import FixedPanel from '../components/fixed-panel/FixedPanel'
 
 
 const Home: NextPage = (props) => {
-
-  //const { data, error } = useSWR('/api/hello', fetcher)
+  const [authorized] = useAuthorized()
 
   useEffect(() => {
     console.log('Props index: ', props)
   }, [props])
-
 
   return (
     <div className={styles.container}>
@@ -26,6 +24,9 @@ const Home: NextPage = (props) => {
       </Head>
 
       <main className={styles.main}>
+
+        {authorized && <FixedPanel />}
+
         <h1 className={styles.title}>
           Welcome to Nib CMS
         </h1>

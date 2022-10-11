@@ -25,13 +25,7 @@ const post = async (url: string, body: any) => {
     body: JSON.stringify(body),
   }
 
-  try {
-    const response = await fetch(url, requestOptions)
-    const data = await response.json()
-    return data
-  } catch (error) {
-    console.log(`POST error for ${url}: `, error)
-  }
+  return fetch(url, requestOptions)
 }
 
 const get = () => { }
