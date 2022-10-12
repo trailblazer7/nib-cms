@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import FixedPanel from '../../components/fixed-panel/FixedPanel'
 import LoginForm from '../../components/forms/LoginForm'
-import TabPanel from '../../components/tab-panel/TabPanel'
+import TabPanel from '../../components/tab-panel/TabSystem'
 import { useAuthorized } from '../../helpers'
 
 const Admin: NextPage = () => {

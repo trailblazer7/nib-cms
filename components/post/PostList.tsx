@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ERROR_FETCH_POSTS } from '../../constants'
 import { fetchWrapper } from '../../helpers'
-import prisma from '../../lib/prisma'
+import Loading from '../Loading'
 
 interface IPost {
   id:number,
@@ -14,25 +14,31 @@ interface IPost {
 export default function PostList() {
 
   const [posts, setPosts] = useState<Array<IPost>>([])
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const fetchPosts = async () => {
+    setIsLoading(true)
     try {
       const response = await fetchWrapper.get('/api/post', {})
-
       if (response.ok) {
         const posts = await response.json()
         setPosts(posts)
+        setIsLoading(false)
       } else {
         console.log(ERROR_FETCH_POSTS, response.statusText)
+        setIsLoading(false)
       }
     } catch (error) {
       console.log(ERROR_FETCH_POSTS, error)
+      setIsLoading(false)
     }
   }
 
   useEffect(() => {
     fetchPosts()
   }, [])
+
+  if (isLoading) return <Loading />
 
   return (
     <ul>
