@@ -28,7 +28,17 @@ const post = async (url: string, body: any) => {
   return fetch(url, requestOptions)
 }
 
-const get = () => { }
+const get = (url: string, body: any) => { 
+  const requestOptions: RequestInit = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json', ...authHeaders(url) as HeadersInit
+    },
+    credentials: 'include',
+  }
+
+  return fetch(url, requestOptions)
+}
 const put = () => { }
 const _delete = () => { }
 

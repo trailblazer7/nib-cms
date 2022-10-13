@@ -7,3 +7,7 @@ export const addInitStyles = () => {
   document.querySelector('body')?.classList.add('h-full')
 }
 
+export const classNames = (...classes:any) => {
+  return classes.filter(Boolean).join(' ')
+}
+

@@ -25,11 +25,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [])
 
   const authCheck = (url:string) => {
-    const publicPuthes = ['/admin', '/admin/register']
-    const path = url.split('?')[0]
+    //const publicPuthes = ['/admin', '/admin/register']
+    //const path = url.split('?')[0]
 
     // if no user and no public path -> set not authorized
-    if (!userService.userValue && !publicPuthes.includes(path)) {
+    if (!userService.userValue) {
       setAuthorized(false)
     } else {
       setAuthorized(true)
