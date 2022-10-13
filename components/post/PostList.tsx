@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ERROR_FETCH_POSTS } from '../../constants'
 import { fetchWrapper } from '../../helpers'
-import Loading from '../Loading'
+import Loading from '../loading/Loading'
 
 interface IPost {
   id:number,
