@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { ERROR_CREDENTIALS, ERROR_EMPTY_FIELDS } from '../../../constants';
-import prisma from '../../../lib/prisma';
+import { ERROR_CREDENTIALS, ERROR_EMPTY_FIELDS } from '@constants';
+import prisma from '@lib/prisma';
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 

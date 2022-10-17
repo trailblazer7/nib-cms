@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import React, { useState } from 'react'
-import { RegisterForm, RegisterLending } from '../../components'
+import { RegisterForm, RegisterLending } from '@components'
 
 
 const Register: NextPage = () => {

@@ -1,10 +1,9 @@
-import type { NextPage } from 'next'
 import Link from 'next/link';
 import { useState } from 'react';
-import { userService } from '../../services';
+import { userService } from '@services';
 import Router from 'next/router';
 
-const LoginForm = () => {
+export const LoginForm = () => {
 
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -124,5 +123,3 @@ const LoginForm = () => {
     </div>
   )
 }
-
-export default LoginForm

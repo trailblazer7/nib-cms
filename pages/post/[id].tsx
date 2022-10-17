@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import { useEffect } from "react";
-import prisma from "../../lib/prisma";
+import prisma from "@lib/prisma";
 
 
 const Post = (props:any) => {

@@ -1,10 +1,10 @@
-import '../styles/globals.css'
+import '@styles/globals.css'
 import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react'
-import { addInitStyles } from '../utils'
+import { addInitStyles } from '@utils'
 import { useRouter } from 'next/router'
-import { userService } from '../services'
-import { useAuthorized } from '../helpers'
+import { userService } from '@services'
+import { useAuthorized } from '@helpers'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [authorized, setAuthorized] = useAuthorized()
