@@ -1,4 +1,4 @@
-import { addInitStyles, classNames } from "../../utils"
+import { addInitStyles, classNames } from "@utils"
 
 describe('utils test', () => {
   it('classNames: separated into one string', () => {
