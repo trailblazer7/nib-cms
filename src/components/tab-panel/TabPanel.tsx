@@ -4,7 +4,7 @@ import AddPost from '../post/AddPost'
 import TabItem from './TabItem'
 import TabPanelItem from './TabPanelItem'
 
-export default function TabPanel() {
+export function TabPanel() {
   return (
     <div className="w-full max-w-md px-2 py-16 sm:px-0">
       <Tab.Group>

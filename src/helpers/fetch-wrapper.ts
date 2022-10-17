@@ -1,10 +1,9 @@
 import { userService } from "../services"
-import { startWith } from "../utils"
 
 const authHeaders = (url: string) => {
   const user = userService.userValue
   const isLoggedIn = user && user.token
-  const isApiUrl = startWith(url, '/url/')
+  const isApiUrl = url.startsWith('/api/')
 
   if (isLoggedIn && isApiUrl) {
     return {

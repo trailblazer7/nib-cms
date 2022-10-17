@@ -2,10 +2,10 @@ import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect } from 'react'
-import styles from '../styles/Home.module.css'
-import prisma from '../lib/prisma'
-import { useAuthorized } from '../helpers'
-import FixedPanel from '../components/fixed-panel/FixedPanel'
+import styles from '@styles/Home.module.css'
+import prisma from '@lib/prisma'
+import { useAuthorized } from '@helpers'
+import { FixedPanel } from '@components'
 
 
 const Home: NextPage = (props) => {
