@@ -1,7 +1,6 @@
 import React from 'react'
 import { userService } from '../../services'
 import { Button } from '../forms/Button'
-import ProfileDropdown from '../profile-dropdown/ProfileDropdown'
 
 export function FixedPanel() {
 

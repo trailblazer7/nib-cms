@@ -19,7 +19,7 @@ export default function PostList() {
   const fetchPosts = async () => {
     setIsLoading(true)
     try {
-      const response = await fetchWrapper.get('/api/post', {})
+      const response = await fetchWrapper.get('/api/posts', {})
       if (response.ok) {
         const posts = await response.json()
         setPosts(posts)

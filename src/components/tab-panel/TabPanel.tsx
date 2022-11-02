@@ -11,6 +11,7 @@ export function TabPanel() {
         <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
           <TabItem label='Dashboard' />
           <TabItem label='Posts' />
+          <TabItem label='Users' />
           <TabItem label='Settings' />
         </Tab.List>
         <Tab.Panels className="mt-2">
@@ -24,6 +25,9 @@ export function TabPanel() {
             </>
           </TabPanelItem>
           <TabPanelItem index={2}>
+            <h3>Users</h3>
+          </TabPanelItem>
+          <TabPanelItem index={3}>
             <h3>Settings</h3>
           </TabPanelItem>
         </Tab.Panels>
